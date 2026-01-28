@@ -1,19 +1,23 @@
 import streamlit as st
 import google.generativeai as genai
-from dotenv import load_dotenv
 import os
 
-# Configure Gemini API
-load_dotenv() 
-
-api_key = os.getenv("GOOGLE_API_KEY")
-
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
+# REMOVED: from dotenv import load_dotenv
+# REMOVED: load_dotenv()
 
 st.set_page_config(page_title="Caelus - Chatbot", page_icon="🤖")
 st.title("Caelus AI")
 st.caption("Your AI assistant powered by Satyam Raj")
+
+# CORRECTED: Get the key from Streamlit Secrets
+try:
+    api_key = st.secrets["GOOGLE_API_KEY"]
+except FileNotFoundError:
+    st.error("Secrets not found. Please add GOOGLE_API_KEY to Streamlit Secrets.")
+    st.stop()
+
+genai.configure(api_key=api_key)
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 if "history" not in st.session_state:
     st.session_state.history = []
