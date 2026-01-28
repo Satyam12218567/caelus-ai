@@ -13,7 +13,7 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 st.set_page_config(page_title="Caelus - Chatbot", page_icon="🤖")
 st.title("Caelus AI")
-st.caption("Your AI assistant powered by Yellendhar Lodi")
+st.caption("Your AI assistant powered by Satyam Raj")
 
 if "history" not in st.session_state:
     st.session_state.history = []
