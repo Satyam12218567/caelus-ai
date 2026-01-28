@@ -17,7 +17,7 @@ except FileNotFoundError:
     st.stop()
 
 genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-1.5-flash-001")
 
 if "history" not in st.session_state:
     st.session_state.history = []
