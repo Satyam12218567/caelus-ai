@@ -33,7 +33,7 @@ if user_input:
     st.session_state.history.append(("user", user_input))
 
     with st.chat_message("assistant"):
-        with st.spinner("Caelus is typing..."):
+        with st.spinner("Caelus is thinking..."):
             try:
                 response = model.generate_content(user_input)
                 bot_reply = response.text
